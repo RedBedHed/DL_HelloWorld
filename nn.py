@@ -48,23 +48,23 @@ class NN:
 
     def backward(self, act):
         self.diff = self.out_2 - onehot(act)
-        self.i0 = self.diff.dot(self.out_1.T) / act.size
-        self.b0 = np.sum(self.diff) / act.size
+        self.dw2 = self.diff.dot(self.out_1.T) / act.size
+        self.db2 = np.sum(self.diff) / act.size
 
         self.relu0 = self.W2.T.dot(self.diff) * (self.in_1 > 0)
-        self.i1 = self.relu0.dot(self.out_0.T) / act.size
-        self.b1 = np.sum(self.relu0) / act.size
+        self.dw1 = self.relu0.dot(self.out_0.T) / act.size
+        self.db1 = np.sum(self.relu0) / act.size
 
         self.relu1 = self.W1.T.dot(self.relu0) * (self.in_0 > 0)
-        self.i2 = self.relu1.dot(self.p) / act.size
-        self.b2 = np.sum(self.relu1) / act.size
+        self.dw0 = self.relu1.dot(self.p) / act.size
+        self.db0 = np.sum(self.relu1) / act.size
 
-        self.W0 -= self.alpha * self.i2
-        self.B0 -= self.alpha * self.b2
-        self.W1 -= self.alpha * self.i1
-        self.B1 -= self.alpha * self.b1
-        self.W2 -= self.alpha * self.i0
-        self.B2 -= self.alpha * self.b0
+        self.W0 -= self.alpha * self.dw0
+        self.B0 -= self.alpha * self.db0
+        self.W1 -= self.alpha * self.dw1
+        self.B1 -= self.alpha * self.db1
+        self.W2 -= self.alpha * self.dw2
+        self.B2 -= self.alpha * self.db2
 
     def classify(self, p):
         return self.forward(p)
