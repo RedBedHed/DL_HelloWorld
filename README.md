@@ -4,8 +4,11 @@ A neural network trained on the MNIST dataset with 96% accuracy.
 
 ## Architecture
 >784 pixels
+
 >240 ReLU
+
 >80 ReLU
+
 >10 SoftMax
 
 ## Loss
