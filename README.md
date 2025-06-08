@@ -1,3 +1,3 @@
 # DL_HelloWorld
 
-![4.png](Screenshot)
+![Screenshot](4.png)
