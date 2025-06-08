@@ -17,8 +17,8 @@ Difference between the output of the last layer and a 1-hot encoded representati
 ## Optimizer
 Batch Gradient Descent.
 
-## Screenshot
-![Screenshot](4.png)
-
 ## Network
 ![Network](net.png)
+
+## Screenshot
+![Screenshot](4.png)
