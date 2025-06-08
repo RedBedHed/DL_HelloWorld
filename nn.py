@@ -127,10 +127,10 @@ if __name__ == "__main__":
     p.add_argument("-t", help="Train Mode: whether to 'train' the model (doesn't write the weights for safety).")
     p.add_argument("-e", help="Epochs: number of epochs.")
     o = p.parse_args()
+
     if o.t is None:
         p.error("-t must be used.")
         exit(0)
-
     
     if o.t == 'True':
         if o.e is None:
