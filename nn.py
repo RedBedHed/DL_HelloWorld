@@ -32,7 +32,6 @@ class NN:
 
         self.alpha = 0.1
 
-
     def forward(self, p):
         self.p = p
 
