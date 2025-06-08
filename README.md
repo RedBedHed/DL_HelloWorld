@@ -3,7 +3,7 @@
 A neural network trained on the MNIST dataset with 96% accuracy.
 
 ## Architecture
->784 pixels
+>784 Pixels
 
 >240 ReLU
 
