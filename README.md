@@ -21,4 +21,7 @@ Batch Gradient Descent.
 ![Network](net.png)
 
 ## Screenshot
-![Screenshot](4.png)
+![Screenshot](five.png)
+
+## Collage
+![Collage](class.png)
