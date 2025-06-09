@@ -17,17 +17,17 @@ class NN:
             self.W2 = np.random.rand(10, 80) - 0.5
             self.B2 = np.random.rand(10, 1) - 0.5
         else:
-            with open("W0.pickle", 'rb') as f:
+            with open("pickles/W0.pickle", 'rb') as f:
                 self.W0 = pickle.load(f)
-            with open("W1.pickle", 'rb') as f:
+            with open("pickles/W1.pickle", 'rb') as f:
                 self.W1 = pickle.load(f)
-            with open("W2.pickle", 'rb') as f:
+            with open("pickles/W2.pickle", 'rb') as f:
                 self.W2 = pickle.load(f)
-            with open("B0.pickle", 'rb') as f:
+            with open("pickles/B0.pickle", 'rb') as f:
                 self.B0 = pickle.load(f)
-            with open("B1.pickle", 'rb') as f:
+            with open("pickles/B1.pickle", 'rb') as f:
                 self.B1 = pickle.load(f)
-            with open("B2.pickle", 'rb') as f:
+            with open("pickles/B2.pickle", 'rb') as f:
                 self.B2 = pickle.load(f)
 
         self.alpha = 0.1
@@ -70,17 +70,17 @@ class NN:
         return self.forward(p)
 
     def dump(self):
-        with open("W0.pickle", 'wb') as f:
+        with open("pickles/W0.pickle", 'wb') as f:
             pickle.dump(self.W0, f)
-        with open("W1.pickle", 'wb') as f:
+        with open("pickles/W1.pickle", 'wb') as f:
             pickle.dump(self.W1, f)
-        with open("W2.pickle", 'wb') as f:
+        with open("pickles/W2.pickle", 'wb') as f:
             pickle.dump(self.W2, f)
-        with open("B0.pickle", 'wb') as f:
+        with open("pickles/B0.pickle", 'wb') as f:
             pickle.dump(self.B0, f)
-        with open("B1.pickle", 'wb') as f:
+        with open("pickles/B1.pickle", 'wb') as f:
             pickle.dump(self.B1, f)
-        with open("B2.pickle", 'wb') as f:
+        with open("pickles/B2.pickle", 'wb') as f:
             pickle.dump(self.B2, f)
 
 def ReLU(a):

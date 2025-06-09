@@ -18,10 +18,10 @@ Difference between the output of the last layer and a 1-hot encoded representati
 Batch Gradient Descent.
 
 ## Network
-![Network](net.png)
+![Network](img/net.png)
 
 ## Screenshot
-![Screenshot](five.png)
+![Screenshot](img/five.png)
 
 ## Collage
-![Collage](class.png)
+![Collage](img/class.png)
