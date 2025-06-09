@@ -2,6 +2,9 @@
 
 A neural network trained on the MNIST dataset with 96% accuracy.
 
+## Interactive Sketchpad Classifier
+Run ```python app.py```
+
 ## Architecture
 >784 Pixels
 
