@@ -10,6 +10,7 @@ INC = 26
 FONT_SZ = 50
 MNIST_SZ = 28
 MNIST_FLAT = 784
+KERNEL_SZ = 3
 
 class Sketch:
     def __init__(self):
@@ -50,6 +51,9 @@ class Sketch:
         self.x, self.y = event.x, event.y
         xx = self.x - self.x % INC
         yy = self.y - self.y % INC
+        if yy >= WIN or xx >= WIN or yy < 0 or xx < 0:
+            return
+
         self.back[yy//INC][xx//INC] = MAX
 
         for cx, cy in self.moore:
@@ -57,6 +61,8 @@ class Sketch:
             cy *= INC
             cx += xx
             cy += yy
+            if cy >= WIN or cx >= WIN or cy < 0 or cx < 0:
+                continue
             rgb = MAX-self.blur()[cy//INC][cx//INC]
             rgb = "#%02x%02x%02x" % (rgb, rgb, rgb)
             self.canvas.create_rectangle(cx, cy, cx + INC, cy + INC, fill=rgb, outline=rgb)
@@ -65,14 +71,10 @@ class Sketch:
         self.label.config(text=f"{self.nn.classify(p.reshape((1, MNIST_FLAT)))[0]}")
 
     def blur(self):
-        # From google's AI search assistant.
-        kernel_size = 3
-        kernel_motion_blur = np.zeros((kernel_size, kernel_size))
-        kernel_motion_blur[int((kernel_size - 1)/2), :] = np.ones(kernel_size)
-        kernel_motion_blur[:, int((kernel_size - 1)/2)] = np.ones(kernel_size)
-        kernel_motion_blur = kernel_motion_blur / kernel_size
-        output = cv2.filter2D(src=self.back, ddepth=-1, kernel=kernel_motion_blur)
-        return output
+        blur = np.zeros((KERNEL_SZ, KERNEL_SZ))
+        blur[(KERNEL_SZ - 1)//2, :] = np.ones(KERNEL_SZ)
+        blur[:, (KERNEL_SZ - 1)//2] = np.ones(KERNEL_SZ)
+        return cv2.filter2D(src=self.back, ddepth=-1, kernel=blur/KERNEL_SZ)
     
 if __name__ == "__main__":
     s = Sketch()
