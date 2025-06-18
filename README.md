@@ -15,10 +15,10 @@ Run ```python app.py```
 >10 SoftMax
 
 ## Loss
-Difference between the output of the last layer and a 1-hot encoded representation of the expected label.
+Cross Entropy (after softmax)
 
 ## Optimizer
-Batch Gradient Descent.
+RMSProp with minibatches
 
 ## Network
 ![Network](img/net.png)
